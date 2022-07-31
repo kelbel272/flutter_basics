@@ -30,49 +30,51 @@ class _MyAppState extends State<MyApp> {
 
         // Centers everything in the body
         body: Center(
-          // Creates a fixed size box
-          child: Container(
-            //Size of the container
-            width: double.infinity,
-            height: double.infinity,
+          // If the current index is Home, display the container
+          child: currentIndex == 0
+              ? Container(
+                  //Size of the container
+                  width: double.infinity,
+                  height: double.infinity,
 
-            //Backgrounf color
-            color: Colors.blue[100],
+                  color: Colors.blue[100], //Background color
 
-            child: Row(
-              // y-axis allignment
-              mainAxisAlignment: MainAxisAlignment.center,
+                  child: Row(
+                    // y-axis allignment
+                    mainAxisAlignment: MainAxisAlignment.center,
 
-              //Button column
-              children: [
-                ElevatedButton(
-                  //Style of the button
-                  //ElevatedButton.styleFrom() restyles a button
-                  style: ElevatedButton.styleFrom(
-                    //onPrimary colors the button font
-                    onPrimary: Colors.white,
+                    //Button column
+                    children: [
+                      ElevatedButton(
+                        //Style of the button
+                        //ElevatedButton.styleFrom() restyles a button
+                        style: ElevatedButton.styleFrom(
+                          //onPrimary colors the button font
+                          onPrimary: Colors.white,
 
-                    //primary colors the button
-                    primary: Colors.orange,
+                          //primary colors the button
+                          primary: Colors.orange,
+                        ),
+                        onPressed: () {
+                          setState(() {
+                            buttonName = 'clicked';
+                          });
+                        },
+                        child: Text(buttonName),
+                      ),
+                      ElevatedButton(
+                        onPressed: () {
+                          setState(() {
+                            buttonName = 'clicked';
+                          });
+                        },
+                        child: Text(buttonName),
+                      ),
+                    ],
                   ),
-                  onPressed: () {
-                    setState(() {
-                      buttonName = 'clicked';
-                    });
-                  },
-                  child: Text(buttonName),
-                ),
-                ElevatedButton(
-                  onPressed: () {
-                    setState(() {
-                      buttonName = 'clicked';
-                    });
-                  },
-                  child: Text(buttonName),
-                ),
-              ],
-            ),
-          ),
+                )
+              // If home not selected, display the SizedBox
+              : SizedBox(),
         ),
 
         bottomNavigationBar: BottomNavigationBar(
