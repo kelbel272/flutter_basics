@@ -15,6 +15,7 @@ class MyApp extends StatefulWidget {
 
 class _MyAppState extends State<MyApp> {
   String buttonName = 'Click'; // Name of Button
+  int currentIndex = 0;
 
 //Matereial App & Scaffold are the most important parts of app
   @override
@@ -48,6 +49,14 @@ class _MyAppState extends State<MyApp> {
               icon: Icon(Icons.settings),
             )
           ],
+
+          //Highlights selected nav button
+          currentIndex: currentIndex,
+          onTap: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
         ),
       ),
     );
