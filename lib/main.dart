@@ -14,90 +14,114 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String buttonName = 'Click'; // Name of Button
-  int currentIndex = 0;
-
 //Matereial App & Scaffold are the most important parts of app
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false, //Removes debug banner from app
 
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text('Welcome'),
-        ), //App Bar at top of screen
+      home: MyAppExtension(),
+    );
+  }
+}
 
-        // Centers everything in the body
-        body: Center(
-          // If the current index is Home, display the container
-          child: currentIndex == 0
-              ? Container(
-                  //Size of the container
-                  width: double.infinity,
-                  height: double.infinity,
+class MyAppExtension extends StatefulWidget {
+  MyAppExtension({Key? key}) : super(key: key);
 
-                  color: Colors.blue[100], //Background color
+  @override
+  State<MyAppExtension> createState() => _MyAppExtensionState();
+}
 
-                  child: Row(
-                    // y-axis allignment
-                    mainAxisAlignment: MainAxisAlignment.center,
+class _MyAppExtensionState extends State<MyAppExtension> {
+  String buttonName = 'Click'; // Name of Button
+  int currentIndex = 0;
 
-                    //Button column
-                    children: [
-                      ElevatedButton(
-                        //Style of the button
-                        //ElevatedButton.styleFrom() restyles a button
-                        style: ElevatedButton.styleFrom(
-                          //onPrimary colors the button font
-                          onPrimary: Colors.white,
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Welcome'),
+      ), //App Bar at top of screen
 
-                          //primary colors the button
-                          primary: Colors.orange,
-                        ),
-                        onPressed: () {
-                          setState(() {
-                            buttonName = 'clicked';
-                          });
-                        },
-                        child: Text(buttonName),
+      // Centers everything in the body
+      body: Center(
+        // If the current index is Home, display the container
+        child: currentIndex == 0
+            ? Container(
+                //Size of the container
+                width: double.infinity,
+                height: double.infinity,
+
+                color: Colors.blue[100], //Background color
+
+                child: Row(
+                  // y-axis allignment
+                  mainAxisAlignment: MainAxisAlignment.center,
+
+                  //Button column
+                  children: [
+                    ElevatedButton(
+                      //Style of the button
+                      //ElevatedButton.styleFrom() restyles a button
+                      style: ElevatedButton.styleFrom(
+                        //onPrimary colors the button font
+                        onPrimary: Colors.white,
+
+                        //primary colors the button
+                        primary: Colors.orange,
                       ),
-                      ElevatedButton(
-                        onPressed: () {
-                          setState(() {
-                            buttonName = 'clicked';
-                          });
-                        },
-                        child: Text(buttonName),
-                      ),
-                    ],
-                  ),
-                )
-              // If home not selected, display the image from url
-              : Image.asset('images/deep-space.jpg'),
-        ),
-
-        bottomNavigationBar: BottomNavigationBar(
-          items: const [
-            BottomNavigationBarItem(
-              label: 'Home',
-              icon: Icon(Icons.home),
-            ),
-            BottomNavigationBarItem(
-              label: 'Settings',
-              icon: Icon(Icons.settings),
-            )
-          ],
-
-          //Highlights selected nav button
-          currentIndex: currentIndex,
-          onTap: (int index) {
-            setState(() {
-              currentIndex = index;
-            });
-          },
-        ),
+                      //When button is pressed, go to the next page
+                      onPressed: () {},
+                      child: Text(buttonName),
+                    ),
+                    ElevatedButton(
+                      onPressed: () {
+                        Navigator.of(context).push(
+                          MaterialPageRoute(
+                            builder: (context) => const NextPage(),
+                          ),
+                        );
+                      },
+                      child: const Text('Next Page'),
+                    ),
+                  ],
+                ),
+              )
+            // If home not selected, display the image from url
+            : Image.asset('images/deep-space.jpg'),
       ),
+
+      bottomNavigationBar: BottomNavigationBar(
+        items: const [
+          BottomNavigationBarItem(
+            label: 'Home',
+            icon: Icon(Icons.home),
+          ),
+          BottomNavigationBarItem(
+            label: 'Settings',
+            icon: Icon(Icons.settings),
+          )
+        ],
+
+        //Highlights selected nav button
+        currentIndex: currentIndex,
+        onTap: (int index) {
+          setState(() {
+            currentIndex = index;
+          });
+        },
+      ),
+    );
+  }
+}
+
+class NextPage extends StatelessWidget {
+  const NextPage({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(),
     );
   }
 }
