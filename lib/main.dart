@@ -28,28 +28,45 @@ class _MyAppState extends State<MyApp> {
           title: const Text('Welcome'),
         ), //App Bar at top of screen
 
+        // Centers everything in the body
         body: Center(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center, //Centers button column
-            //Button column
-            children: [
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    buttonName = 'clicked';
-                  });
-                },
-                child: Text(buttonName),
-              ),
-              ElevatedButton(
-                onPressed: () {
-                  setState(() {
-                    buttonName = 'clicked';
-                  });
-                },
-                child: Text(buttonName),
-              ),
-            ],
+          // Creates a fixed size box
+          child: SizedBox(
+            width: double.infinity,
+            height: double.infinity,
+            child: Row(
+              // y-axis allignment
+              mainAxisAlignment: MainAxisAlignment.center,
+
+              //Button column
+              children: [
+                ElevatedButton(
+                  //Style of the button
+                  //ElevatedButton.styleFrom() restyles a button
+                  style: ElevatedButton.styleFrom(
+                    //onPrimary colors the button font
+                    onPrimary: Colors.white,
+
+                    //primary colors the button
+                    primary: Colors.orange,
+                  ),
+                  onPressed: () {
+                    setState(() {
+                      buttonName = 'clicked';
+                    });
+                  },
+                  child: Text(buttonName),
+                ),
+                ElevatedButton(
+                  onPressed: () {
+                    setState(() {
+                      buttonName = 'clicked';
+                    });
+                  },
+                  child: Text(buttonName),
+                ),
+              ],
+            ),
           ),
         ),
 
