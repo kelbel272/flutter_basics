@@ -74,8 +74,7 @@ class _MyAppState extends State<MyApp> {
                   ),
                 )
               // If home not selected, display the image from url
-              : Image.network(
-                  'http://www.nasa.gov/sites/default/files/thumbnails/image/main_image_deep_field_smacs0723-5mb.jpg'),
+              : Image.asset('images/deep-space.jpg'),
         ),
 
         bottomNavigationBar: BottomNavigationBar(
