@@ -31,9 +31,14 @@ class _MyAppState extends State<MyApp> {
         // Centers everything in the body
         body: Center(
           // Creates a fixed size box
-          child: SizedBox(
+          child: Container(
+            //Size of the container
             width: double.infinity,
             height: double.infinity,
+
+            //Backgrounf color
+            color: Colors.blue[100],
+
             child: Row(
               // y-axis allignment
               mainAxisAlignment: MainAxisAlignment.center,
