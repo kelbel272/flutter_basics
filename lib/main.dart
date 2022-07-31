@@ -21,20 +21,35 @@ class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
+      debugShowCheckedModeBanner: false, //Removes debug banner from app
+
       home: Scaffold(
         appBar: AppBar(
           title: const Text('Welcome'),
         ), //App Bar at top of screen
 
         body: Center(
-          child: ElevatedButton(
-            onPressed: () {
-              setState(() {
-                buttonName = 'clicked';
-              });
-            },
-            child: Text(buttonName),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center, //Centers button column
+            //Button column
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    buttonName = 'clicked';
+                  });
+                },
+                child: Text(buttonName),
+              ),
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    buttonName = 'clicked';
+                  });
+                },
+                child: Text(buttonName),
+              ),
+            ],
           ),
         ),
 
