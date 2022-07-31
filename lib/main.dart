@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:animated_text_kit/animated_text_kit.dart';
 
 // Runs the app
 void main() {
@@ -15,7 +14,7 @@ class MyApp extends StatefulWidget {
 }
 
 class _MyAppState extends State<MyApp> {
-  String buttonName = 'Click';
+  String buttonName = 'Click'; // Name of Button
 
 //Matereial App & Scaffold are the most important parts of app
   @override
@@ -29,8 +28,12 @@ class _MyAppState extends State<MyApp> {
 
         body: Center(
           child: ElevatedButton(
-            onPressed: () {},
-            child: const Text('Click'),
+            onPressed: () {
+              setState(() {
+                buttonName = 'clicked';
+              });
+            },
+            child: Text(buttonName),
           ),
         ),
 
