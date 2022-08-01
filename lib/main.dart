@@ -35,6 +35,7 @@ class MyAppExtension extends StatefulWidget {
 class _MyAppExtensionState extends State<MyAppExtension> {
   String buttonName = 'Click'; // Name of Button
   int currentIndex = 0;
+  bool _isClicked = false;
 
   @override
   Widget build(BuildContext context) {
@@ -71,7 +72,11 @@ class _MyAppExtensionState extends State<MyAppExtension> {
                         primary: Colors.orange,
                       ),
                       //When button is pressed, go to the next page
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          buttonName = 'clicked';
+                        });
+                      },
                       child: Text(buttonName),
                     ),
                     ElevatedButton(
@@ -88,7 +93,17 @@ class _MyAppExtensionState extends State<MyAppExtension> {
                 ),
               )
             // If home not selected, display the image from url
-            : Image.asset('images/deep-space.jpg'),
+            : GestureDetector(
+                onTap: () {
+                  setState(() {
+                    _isClicked = !_isClicked;
+                  });
+                },
+                // if image clicked show space, if not show something els
+                child: _isClicked
+                    ? Image.asset('images/deep-space.jpg')
+                    : Image.asset('images/cosmos.jpg'),
+              ),
       ),
 
       bottomNavigationBar: BottomNavigationBar(
